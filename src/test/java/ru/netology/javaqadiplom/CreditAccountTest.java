@@ -72,7 +72,6 @@ public class CreditAccountTest {
 
         boolean result = account.pay(7_000);
 
-        // Операция должна быть отклонена, баланс не должен измениться
         Assertions.assertFalse(result);
         Assertions.assertEquals(initialBalance, account.getBalance());
     }
@@ -103,14 +102,14 @@ public class CreditAccountTest {
     @Test
     public void shouldAddToPositiveBalance() {
         CreditAccount account = new CreditAccount(
-                0,
+                1000,
                 5_000,
                 15
         );
 
         account.add(3_000);
 
-        Assertions.assertEquals(3_000, account.getBalance());
+        Assertions.assertEquals(4_000, account.getBalance());
     }
     @Test
     public void shouldNotAddWhenAmountZero() {
