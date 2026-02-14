@@ -87,7 +87,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldPayMoreThanMinBalance() {
+    public void shouldPayOverMinBalance() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 1_000,
@@ -115,7 +115,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldAddMoreThanMaxBalance() {
+    public void shouldAddOverMaxBalance() {
         SavingAccount account = new SavingAccount(
                 2_000,
                 1_000,
@@ -164,4 +164,17 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(0,account.yearChange());
     }
+
+    @Test
+    public void shouldCalculatePercentInLimitMaxBalance() {
+        SavingAccount account = new SavingAccount(
+                10_000,
+                1_000,
+                10_400,
+                5
+        );
+
+        Assertions.assertEquals(400,account.yearChange());
+    }
+
 }
