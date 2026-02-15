@@ -167,27 +167,27 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldCalculatePercentOnTheMaxBalance() {
+    public void shouldCalculatePercentOnTheSmallBalance() {
         SavingAccount account = new SavingAccount(
+                150,
+                100,
                 10_000,
-                1_000,
-                10_000,
-                5
+                15
         );
 
-        Assertions.assertEquals(0, account.yearChange());
+        Assertions.assertEquals(22, account.yearChange());
     }
 
     @Test
-    public void shouldCalculatePercentInLimitMaxBalance() {
+    public void shouldCalculatePercentOnTheNegativeBalance() {
         SavingAccount account = new SavingAccount(
+                -100,
+                -150,
                 10_000,
-                1_000,
-                10_400,
-                5
+                15
         );
 
-        Assertions.assertEquals(400, account.yearChange());
+        Assertions.assertEquals(0, account.yearChange());
     }
 
 }
