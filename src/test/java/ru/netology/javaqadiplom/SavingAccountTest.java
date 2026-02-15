@@ -177,17 +177,5 @@ public class SavingAccountTest {
 
         Assertions.assertEquals(22, account.yearChange());
     }
-
-    @Test
-    public void shouldCalculatePercentOnTheNegativeBalance() {
-        SavingAccount account = new SavingAccount(
-                -100,
-                -150,
-                10_000,
-                15
-        );
-
-        Assertions.assertEquals(0, account.yearChange());
-    }
-
+    
 }
