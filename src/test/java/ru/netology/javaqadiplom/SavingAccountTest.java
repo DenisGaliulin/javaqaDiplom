@@ -21,7 +21,7 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenInitialBalanceLessThenMin() {
+    public void shouldThrowExceptionWhenInitialBalanceLessThanMin() {
         assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(
                     0,
@@ -34,11 +34,23 @@ public class SavingAccountTest {
     }
 
     @Test
-    public void shouldThrowExceptionWhenMinBalanceMoreThanMax() {
+    public void shouldThrowExceptionWhenMinBalanceOverMax() {
         assertThrows(IllegalArgumentException.class, () -> {
             new SavingAccount(
                     2_000,
                     12_000,
+                    10_000,
+                    5
+            );
+        });
+    }
+
+    @Test
+    public void shouldThrowExceptionWhenInitialBalanceOverMax() {
+        assertThrows(IllegalArgumentException.class, () -> {
+            new SavingAccount(
+                    12_000,
+                    1_000,
                     10_000,
                     5
             );
@@ -151,8 +163,9 @@ public class SavingAccountTest {
                 15
         );
 
-        Assertions.assertEquals(300,account.yearChange());
+        Assertions.assertEquals(300, account.yearChange());
     }
+
     @Test
     public void shouldCalculatePercentOnTheMaxBalance() {
         SavingAccount account = new SavingAccount(
@@ -162,7 +175,7 @@ public class SavingAccountTest {
                 5
         );
 
-        Assertions.assertEquals(0,account.yearChange());
+        Assertions.assertEquals(0, account.yearChange());
     }
 
     @Test
@@ -174,7 +187,7 @@ public class SavingAccountTest {
                 5
         );
 
-        Assertions.assertEquals(400,account.yearChange());
+        Assertions.assertEquals(400, account.yearChange());
     }
 
 }
