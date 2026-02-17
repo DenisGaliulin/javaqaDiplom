@@ -156,7 +156,9 @@ public class CreditAccountTest {
     @Test
     public void shouldCalculateYearChangeWhenBalanceNegative() {
 
-        CreditAccount account = new CreditAccount(-2_000, 5_000, 15);
+        CreditAccount account = new CreditAccount(0, 5_000, 15);
+
+        account.pay(2000);
 
         int result = account.yearChange();
 
@@ -166,7 +168,9 @@ public class CreditAccountTest {
     @Test
     public void shouldCalculateYearChangeWhenBalanceNegativeAndSmallAmount() {
 
-        CreditAccount account = new CreditAccount(-50, 5_000, 15);
+        CreditAccount account = new CreditAccount(0, 5_000, 15);
+
+        account.pay(50);
 
         int result = account.yearChange();
 
